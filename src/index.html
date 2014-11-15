@@ -233,6 +233,14 @@
                 </form>
             </div>
         </div>
+
+        <div class="panel panel-primary" ng-show="results">
+          <div class="panel-heading">Finally,</div>
+          <div class="panel-body">
+            You have to drive atleast <b>{{results|number:3}}</b> kms in a month for the Diesel variety to be profitable than Petrol variety.
+          </div>
+        </div>
+
         <div class="row">
             <div class="col-md-6 col-md-offset-3 btn btn-success calc-btn" ng-click="calculate()">Show me the poison!</div>
         </div>

@@ -161,6 +161,8 @@ angular.module('carAdvisor')
                     break;
                 }
             }
+            $scope.car.years=5;
+            $scope.car.rInt=7;
         };
         $http.jsonp('https://www.kimonolabs.com/api/2tyjuvaa?apikey=BrYpmtAOTbdei17Gr0tWlUM6dT2Y5xKP&callback=JSON_CALLBACK').success(function(data){
             data = data.results.prices[0];
@@ -193,8 +195,9 @@ angular.module('carAdvisor')
             pem=parseFloat(c.petrol.extraMaintCost);
             pi=parseFloat(c.petrol.insuranceCost);
 
-            x=(dm*ds*(dc + dem + di + (((1 + rint/100)^n)*(dc - pc)) - pc - pem - pi)*pm*ps) / (12*n*(-df*ds*pm*ps + dm*(ds*pcs*pm + ds*pf*ps - dcs*pm*ps)));
-            console.log(x);
+            x=(dm*ds*(dc + dem + di + (Math.pow((1 + rint/100),n)*(dc - pc)) - pc - pem - pi)*pm*ps) / (12*n*(-df*ds*pm*ps + dm*(ds*pcs*pm + ds*pf*ps - dcs*pm*ps)));
+
+            $scope.results = x;
         };
        
     });
