@@ -1,23 +1,27 @@
 'use strict';
 
 angular.module('carAdvisor')
-    .controller('MainCtrl', function ($scope, $location, $anchorScroll) {
+    .controller('MainCtrl', function ($http, $scope, $location, $anchorScroll) {
+        var x,c,n,dc,pc,rint,ds,ps,dcs,pcs,dem,pem,df,pf,dm,pm,di,pi;
         $scope.carData = [
             {
                 'name': 'Swift Dzire',
                 'description': '',
                 'logo':'dzire.png',
                 'petrol': {
-                  'cost': 485000,
-                  'hmilage': 19.1,
-                  'cmilage': 16.3,
-                  'maintainance': 3333.3
-                },
+                  'cost': 485000.0,
+                  'milage': 17.7,
+                  'servicePeriod': 15000.0,
+                  'costPerService': 2500.0,
+                  'extraMaintCost': 2500.0,
+                  'insuranceCost': 43000.0              },
                 'diesel': {
                   'cost': 579000,
-                  'hmilage': 23.4,
-                  'cmilage': 18.6,
-                  'maintainance': 4168.6
+                  'milage': 21.0,
+                  'servicePeriod': 15000.0,
+                  'costPerService': 2500.0,
+                  'extraMaintCost': 5000.0,
+                  'insuranceCost': 55000.0  
                 }
               },
               {
@@ -26,14 +30,12 @@ angular.module('carAdvisor')
                 'logo':'xcent.png',
                 'petrol': {
                   'cost': 473000,
-                  'hmilage': 19.2,
-                  'cmilage': 15.7,
+                  'milage': 17.45,
                   'maintainance': 2763
                 },
                 'diesel': {
                   'cost': 562000,
-                  'hmilage': 24.4,
-                  'cmilage': 18.9,
+                  'milage': 31.65,
                   'maintainance': 4121.8
                 }
               },
@@ -43,14 +45,12 @@ angular.module('carAdvisor')
                 'logo':'manza.png',
                 'petrol': {
                   'cost': 580000,
-                  'hmilage': 14.5,
-                  'cmilage': 11.1,
+                  'milage': 12.8,
                   'maintainance': 3260
                 },
                 'diesel': {
                   'cost': 600000,
-                  'hmilage': 21.2,
-                  'cmilage': 19.5,
+                  'milage': 20.35,
                   'maintainance': 5008
                 }
               },
@@ -60,14 +60,12 @@ angular.module('carAdvisor')
                 'logo':'etios.png',
                 'petrol': {
                   'cost': 574000,
-                  'hmilage': 16.7,
-                  'cmilage': 13.5,
+                  'milage': 15.1,
                   'maintainance': 2963.3
                 },
                 'diesel': {
                   'cost': 684000,
-                  'hmilage': 23.59,
-                  'cmilage': 20.3,
+                  'milage': 21.945,
                   'maintainance': 3070.8
                 }
               },
@@ -77,14 +75,12 @@ angular.module('carAdvisor')
                 'logo':'amaze.png',
                 'petrol': {
                   'cost': 500000,
-                  'hmilage': 18,
-                  'cmilage': 15,
+                  'milage': 16.5,                 
                   'maintainance': 4557.5
                 },
                 'diesel': {
                   'cost': 598000,
-                  'hmilage': 25.8,
-                  'cmilage': 21,
+                  'milage': 23.4,                 
                   'maintainance': 5140.9
                 }
               },
@@ -94,14 +90,12 @@ angular.module('carAdvisor')
                 'logo':'linea.png',
                 'petrol': {
                   'cost': 700000,
-                  'hmilage': 14.9,
-                  'cmilage': 11.2,
+                  'milage': 13.05,
                   'maintainance': 4611
                 },
                 'diesel': {
                   'cost': 817000,
-                  'hmilage': 20.4,
-                  'cmilage': 17.2,
+                  'milage': 18.8,
                   'maintainance': 5077
                 }
               },
@@ -111,14 +105,12 @@ angular.module('carAdvisor')
                 'logo':'sunny.png',
                 'petrol': {
                   'cost': 699000,
-                  'hmilage': 14.9,
-                  'cmilage': 11.2,
+                  'milage': 13.05,
                   'maintainance': 3249.1
                 },
                 'diesel': {
                   'cost': 813000,
-                  'hmilage': 20.4,
-                  'cmilage': 17.2,
+                  'milage': 18.8,
                   'maintainance': 5881.3
                 }
               },
@@ -128,14 +120,12 @@ angular.module('carAdvisor')
                 'logo':'city.png',
                 'petrol': {
                   'cost': 699000,
-                  'hmilage': 14.9,
-                  'cmilage': 11.2,
+                  'milage': 13.05,
                   'maintainance': 3249.1
                 },
                 'diesel': {
                   'cost': 813000,
-                  'hmilage': 20.4,
-                  'cmilage': 17.2,
+                  'milage': 18.8,
                   'maintainance': 5881.3
                 }
               },
@@ -145,14 +135,12 @@ angular.module('carAdvisor')
                 'logo':'custom.png',
                 'petrol': {
                   'cost': 0,
-                  'hmilage': 0,
-                  'cmilage': 0,
+                  'milage': 0,                
                   'maintainance': 0
                 },
                 'diesel': {
                   'cost': 0,
-                  'hmilage': 0,
-                  'cmilage': 0,
+                  'milage': 0,                
                   'maintainance': 0
                 }
             }
@@ -173,6 +161,40 @@ angular.module('carAdvisor')
                     break;
                 }
             }
+        };
+        $http.jsonp('https://www.kimonolabs.com/api/2tyjuvaa?apikey=BrYpmtAOTbdei17Gr0tWlUM6dT2Y5xKP&callback=JSON_CALLBACK').success(function(data){
+            data = data.results.prices[0];
+            pf = parseFloat(data.petrol.slice(0,5));
+            df = parseFloat(data.diesel.slice(0,5));
+            $scope.pf=pf;
+            $scope.df=df;
+
+        }).error(function(error){
+            console.log(error);
+        });
+
+        $scope.calculate = function(){
+            c = $scope.car;
+
+            n = parseFloat(c.years);
+            rint = parseFloat(c.rInt);
+
+            dc=parseFloat(c.diesel.cost);
+            dm=parseFloat(c.diesel.milage);
+            ds=parseFloat(c.diesel.servicePeriod);
+            dcs=parseFloat(c.diesel.costPerService);
+            dem=parseFloat(c.diesel.extraMaintCost);
+            di=parseFloat(c.diesel.insuranceCost);
+
+            pc=parseFloat(c.petrol.cost);
+            pm=parseFloat(c.petrol.milage);
+            ps=parseFloat(c.petrol.servicePeriod);
+            pcs=parseFloat(c.petrol.costPerService);
+            pem=parseFloat(c.petrol.extraMaintCost);
+            pi=parseFloat(c.petrol.insuranceCost);
+
+            x=(dm*ds*(dc + dem + di + (((1 + rint/100)^n)*(dc - pc)) - pc - pem - pi)*pm*ps) / (12*n*(-df*ds*pm*ps + dm*(ds*pcs*pm + ds*pf*ps - dcs*pm*ps)));
+            console.log(x);
         };
        
     });

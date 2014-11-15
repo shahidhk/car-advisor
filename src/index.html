@@ -54,105 +54,194 @@
       </div>
     
       <hr>
-    
-      <div class="row" ng-show="car" id="details">
-        <h2>{{car.name}}</h2><hr/>
-        <div class="col-md-6">
-            <form class="form-horizontal">
-            <fieldset>
+      
+    <div id="details" ng-show="car">
+        <div class="row" >
+            <div class="col-md-12">
+                <form class="form-horizontal">
+                    <fieldset>
 
-            <!-- Form Name -->
-            <legend>Diesel variety</legend>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prependedtext">Cost</label>
-              <div class="col-md-4">
-                <div class="input-group">
-                  <span class="input-group-addon">&#8377</span>
-                  <input ng-model="car.diesel.cost" class="form-control" placeholder="in Rupees" type="text">
-                </div>
-              </div>
+                        <!-- Form Name -->
+                        <legend>Common data</legend>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Years of posession of car</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <input ng-model="car.years" class="form-control" placeholder="number" type="text">
+                            </div>
+                          </div>
+                        </div>
+            
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Rate of Interest if investing for {{car.years}} years</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <input ng-model="car.rInt" class="form-control" placeholder="in %" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Price of petrol/litre</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                            <span class="input-group-addon">&#8377</span>
+                              <input disabled ng-model="pf" class="form-control" placeholder="" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Price of diesel/litre</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                            <span class="input-group-addon">&#8377</span>
+                              <input disabled ng-model="df" class="form-control" placeholder="" type="text">
+                            </div>
+                            <p class="help">Today's price at Mumbai</p>
+                          </div>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prependedtext">Highway milage</label>
-              <div class="col-md-4">
-                <div class="input-group">
-                  <input ng-model="car.diesel.hmilage" class="form-control" placeholder="in Kms/Litre" type="text">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prependedtext">City milage</label>
-              <div class="col-md-4">
-                <div class="input-group">
-                  <input ng-model="car.diesel.cmilage" class="form-control" placeholder="in Kms/Litre" type="text">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prependedtext">Maintenance cost</label>
-              <div class="col-md-4">
-                <div class="input-group">
-                  <span class="input-group-addon">&#8377</span>
-                  <input ng-model="car.diesel.maintainance" class="form-control" placeholder="in Rupees" type="text">
-                </div>
-              </div>
-            </div>
-
-            </fieldset>
-            </form>
-
         </div>
-        <div class="col-md-6">
-            <form class="form-horizontal">
-            <fieldset>
+        <div class="row">
+            <h2>{{car.name}}</h2><hr/>
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend>Diesel variety</legend>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Cost</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <span class="input-group-addon">&#8377</span>
+                              <input ng-model="car.diesel.cost" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Milage</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <input ng-model="car.diesel.milage" class="form-control" placeholder="in Kms/Litre" type="text">
+                            </div>
+                          </div>
+                        </div>
 
-            <!-- Form Name -->
-            <legend>Petrol variety</legend>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prependedtext">Cost</label>
-              <div class="col-md-4">
-                <div class="input-group">
-                  <span class="input-group-addon">&#8377</span>
-                  <input ng-model="car.petrol.cost" class="form-control" placeholder="in Rupees" type="text">
-                </div>
-              </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Service period</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                            
+                              <input ng-model="car.diesel.servicePeriod" class="form-control" placeholder="in Kms" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Cost per service</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <span class="input-group-addon">&#8377</span>
+                              <input ng-model="car.diesel.costPerService" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Extra maintenance cost</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <span class="input-group-addon">&#8377</span>
+                              <input ng-model="car.diesel.extraMaintCost" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Insurance Cost for {{car.years}} years
+                            </label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                            <span class="input-group-addon">&#8377</span>
+                              <input ng-model="car.diesel.insuranceCost" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prependedtext">Highway milage</label>
-              <div class="col-md-4">
-                <div class="input-group">
-                  <input ng-model="car.petrol.hmilage" class="form-control" placeholder="in Kms/Litre" type="text">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prependedtext">City milage</label>
-              <div class="col-md-4">
-                <div class="input-group">
-                  <input ng-model="car.petrol.cmilage" class="form-control" placeholder="in Kms/Litre" type="text">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="prependedtext">Maintenance cost</label>
-              <div class="col-md-4">
-                <div class="input-group">
-                  <span class="input-group-addon">&#8377</span>
-                  <input ng-model="car.petrol.maintainance" class="form-control" placeholder="in Rupees" type="text">
-                </div>
-              </div>
-            </div>
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <fieldset>
 
-            </fieldset>
-            </form>
+                        <!-- Form Name -->
+                        <legend>Petrol variety</legend>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Cost</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <span class="input-group-addon">&#8377</span>
+                              <input ng-model="car.petrol.cost" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Milage</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <input ng-model="car.petrol.milage" class="form-control" placeholder="in Kms/Litre" type="text">
+                            </div>
+                          </div>
+                        </div>
 
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Service period</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                            
+                              <input ng-model="car.petrol.servicePeriod" class="form-control" placeholder="in Kms" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Cost per service</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <span class="input-group-addon">&#8377</span>
+                              <input ng-model="car.petrol.costPerService" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Extra maintenance cost</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <span class="input-group-addon">&#8377</span>
+                              <input ng-model="car.petrol.extraMaintCost" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Insurance Cost for {{car.years}} years
+                            </label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                            <span class="input-group-addon">&#8377</span>
+                              <input ng-model="car.petrol.insuranceCost" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         </div>
-      </div>
-    
-      <div class="footer">
-        <p>With ♥ from</p>
-      </div>
-    
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 btn btn-success calc-btn" ng-click="calculate()">Show me the poison!</div>
+        </div>
+    </div>
+
+    <div>
+        <div class="footer">
+            <p>With ♥ from</p>
+        </div>   
     </div>
     
 
