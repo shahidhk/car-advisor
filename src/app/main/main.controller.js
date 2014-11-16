@@ -222,6 +222,7 @@ angular.module('carAdvisor')
 
             $scope.car.petrol.insuranceCost = parseFloat($scope.car.petrol.cost)*0.16*parseFloat($scope.car.years);
             $scope.car.diesel.insuranceCost = parseFloat($scope.car.diesel.cost)*0.16*parseFloat($scope.car.years);
+            $scope.result=null;
         };
         $http.jsonp('https://www.kimonolabs.com/api/2tyjuvaa?apikey=BrYpmtAOTbdei17Gr0tWlUM6dT2Y5xKP&callback=JSON_CALLBACK').success(function(data){
             data = data.results.prices[0];

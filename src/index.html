@@ -31,14 +31,17 @@
     
       <div ng-include="'components/navbar/navbar.html'"></div>
     
-      <div class="jumbotron text-center">
-        <h1>Car advisor</h1>
-        <p class="lead">
-          Lets you choose the right car.
-        </p>
-    
+      <div class="row ">
+        <div class="col-md-12">
+          <center>
+            <img class="img-responsive heading-img" ng-src="assets/images/fuel.png" />
+          </center>
+        </div>
       </div>
-    
+      <center>
+      <h1>Car Advisor</h1>
+      </center>
+    <hr/>
       <div class="row car-col">
         <div class="col-sm-6 col-md-4" ng-repeat="car in carData" ng-click="selectCar(car.name)">
           <div class="thumbnail">
@@ -285,7 +288,7 @@
             </div>
         </div>
 
-        <div class="panel panel-primary" ng-show="result">
+        <div class="panel panel-success" ng-show="result">
           <div class="panel-heading">Finally,</div>
           <div class="panel-body">
             {{result}}
@@ -293,7 +296,9 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-md-offset-3 btn btn-success calc-btn" ng-click="calculate()">Click here to calculate!</div>
+            <center>
+              <div class="col-md-12 btn btn-primary calc-btn" ng-click="calculate()">Click here to calculate!</div>
+            </center>
         </div>
     </div>
 
