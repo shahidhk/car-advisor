@@ -85,7 +85,7 @@
                           <div class="col-md-4">
                             <div class="input-group">
                             <span class="input-group-addon">&#8377</span>
-                              <input required disabled ng-model="pf" class="form-control" placeholder="" type="text">
+                              <input required ng-model="pf" class="form-control" placeholder="" type="text">
                             </div>
                           </div>
                         </div>
@@ -94,9 +94,26 @@
                           <div class="col-md-4">
                             <div class="input-group">
                             <span class="input-group-addon">&#8377</span>
-                              <input required disabled ng-model="df" class="form-control" placeholder="" type="text">
+                              <input required ng-model="df" class="form-control" placeholder="" type="text">
                             </div>
                             <p class="help">Today's price at Mumbai</p>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Highway kms per month</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <input required ng-model="car.hkm" class="form-control" placeholder="" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">City kms per month</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <input required ng-model="car.ckm" class="form-control" placeholder="" type="text">
+                            </div>
+                            <p class="help">Distance you are gonna drive the car in a month</p>
                           </div>
                         </div>
                     </fieldset>
@@ -120,10 +137,18 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="prependedtext">Milage</label>
+                          <label class="col-md-4 control-label" for="prependedtext">City mileage</label>
                           <div class="col-md-4">
                             <div class="input-group">
-                              <input required ng-model="car.diesel.milage" class="form-control" placeholder="in Kms/Litre" type="text">
+                              <input required ng-model="car.diesel.cmileage" class="form-control" placeholder="in Kms/Litre" type="text">
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Highway mileage</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <input required ng-model="car.diesel.hmileage" class="form-control" placeholder="in Kms/Litre" type="text">
                             </div>
                           </div>
                         </div>
@@ -165,6 +190,16 @@
                             </div>
                           </div>
                         </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Resale value after {{car.years}} years
+                            </label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                            <span class="input-group-addon">&#8377</span>
+                              <input required ng-model="car.diesel.resaleValue" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>
@@ -184,14 +219,21 @@
                           </div>
                         </div>
                         <div class="form-group">
-                          <label class="col-md-4 control-label" for="prependedtext">Milage</label>
+                          <label class="col-md-4 control-label" for="prependedtext">City mileage</label>
                           <div class="col-md-4">
                             <div class="input-group">
-                              <input required ng-model="car.petrol.milage" class="form-control" placeholder="in Kms/Litre" type="text">
+                              <input required ng-model="car.petrol.cmileage" class="form-control" placeholder="in Kms/Litre" type="text">
                             </div>
                           </div>
                         </div>
-
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Highway mileage</label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                              <input required ng-model="car.petrol.hmileage" class="form-control" placeholder="in Kms/Litre" type="text">
+                            </div>
+                          </div>
+                        </div>
                         <div class="form-group">
                           <label class="col-md-4 control-label" for="prependedtext">Service period</label>
                           <div class="col-md-4">
@@ -229,15 +271,25 @@
                             </div>
                           </div>
                         </div>
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="prependedtext">Resale value after {{car.years}} years
+                            </label>
+                          <div class="col-md-4">
+                            <div class="input-group">
+                            <span class="input-group-addon">&#8377</span>
+                              <input required ng-model="car.petrol.resaleValue" class="form-control" placeholder="in Rupees" type="text">
+                            </div>
+                          </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>
         </div>
 
-        <div class="panel panel-primary" ng-show="results">
+        <div class="panel panel-primary" ng-show="result">
           <div class="panel-heading">Finally,</div>
           <div class="panel-body">
-            You have to drive atleast <b>{{results|number:3}}</b> kms in a month for the Diesel variety to be profitable than Petrol variety.
+            {{result}}
           </div>
         </div>
 
